@@ -89,8 +89,6 @@ def get_charts(stock_data):
     format_legend(plot_price)
     get_prev_day_info(plot_price)   
     
-    
-    
     plot_vol = axes[1]
     plot_vol.bar(date, vol, width=15, color='darkgrey')
     plot_vol.yaxis.tick_right()
@@ -103,10 +101,12 @@ def get_charts(stock_data):
     
     format_borders(plot_vol)
     
-    %matplotlib inline
+%matplotlib inline
 
 ## Main
 symbol = input('Input a ticker:\n').upper()
+
 stock_df = pd.DataFrame(get_daily_stock_info(symbol))
 stock_df = stock_df.astype({'Date': 'datetime64[ns]', 'Close': 'float', 'Volume': 'int'}, copy=False)
+
 get_charts(stock_df)
